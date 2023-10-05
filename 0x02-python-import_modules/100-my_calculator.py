@@ -9,11 +9,11 @@ if __name__ == "__main__":
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         sys.exit(1)
 
-    operations = {"+": add, "-": sub, "*": mul, "/": div}
-    if sys.argv[2] not in list(operations.keys()):
+    opers = {"+": add, "-": sub, "*": mul, "/": div}
+    if sys.argv[2] not in list(opers.keys()):
         print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
 
     a = int(sys.argv[1])
     b = int(sys.argv[3])
-    print("{} {} {} = {}".format(a, sys.argv[2], b, operations[sys.argv[2]](a, b)))
+    print("{} {} {} = {}".format(a, sys.argv[2], b, opers[sys.argv[2]](a, b)))
