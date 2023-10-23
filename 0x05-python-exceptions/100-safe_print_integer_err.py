@@ -2,10 +2,10 @@
 import sys
 
 def safe_print_integer_err(value):
+    isintegr = True
     try:
         print("{:d}".format(value))
-    except Exception as e:
-        print("Exception: {}".format(e), file=sys.stderr)
-        return False
-    else:
-        return True
+    except Exception as er:
+        print("Exception:", er, file=sys.stderr)
+        isintegr =  False
+    return isintegr
