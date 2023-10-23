@@ -90,7 +90,7 @@ void print_python_list(PyObject *p)
 		printf("Element %d: %s\n", ind, type);
 		if (strcmp(type, "bytes") == 0)
 			print_python_bytes(list->ob_item[ind]);
-                else if (strcmp(type, "float") == 0)
-                        print_python_float(list->ob_item[ind]);
+		else if (strcmp(type, "float") == 0)
+			print_python_float(list->ob_item[ind]);
 	}
 }
