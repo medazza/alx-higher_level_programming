@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Define a Square module."""
 
+
 class Square:
     """Represent a square class that can calc area."""
 
