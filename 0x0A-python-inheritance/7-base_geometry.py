@@ -11,7 +11,7 @@ class BaseGeometry:
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """ Validates Value name is assumed to be a string"""
+        """Validates Value name is assumed to be a string"""
 
         if type(value) != int:
             mesg = "{:s} must be an integer".format(name)
