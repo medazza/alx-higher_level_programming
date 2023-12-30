@@ -32,5 +32,5 @@ Several popular higher-level programming languages include:
 
 Happy coding!
 
-## Author
+## Author 🖊️:
 * **AZZA MOHAMED** [AZZA](https://github.com/medazza)- ALX-Africa SE Student cohort 17
