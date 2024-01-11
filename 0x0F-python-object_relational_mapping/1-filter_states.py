@@ -1,9 +1,8 @@
 #!/usr/bin/python3
+# Usage: ./1-filter_states.py <mysql username> \
+#                             <mysql password> \
+#                             <database name>
 """states models"""
-#  Usage: ./0-select_states.py <mysql username> \
-#                              <mysql password> \
-#                              <database name>
-
 import sys
 import MySQLdb
 
@@ -18,7 +17,7 @@ if __name__ == "__main__":
         host=db_host, user=db_user, passwd=db_password, db=db_name, port=port
     )
     cursor = db.cursor()
-    cursor.execute("SELECT * FROM `states` ORDER BY `id` ASC")
-    [print(state) for state in cursor.fetchall()]
+    cursor.execute("SELECT * FROM `states` ORDER BY `id`")
+    [print(state) for state in cursor.fetchall() if state[1][0] == "N"]
     cursor.close()
     db.close()
