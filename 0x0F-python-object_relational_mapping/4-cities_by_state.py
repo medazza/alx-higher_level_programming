@@ -1,11 +1,9 @@
 #!/usr/bin/python3
-# Usage: ./4-cities_by_state.py <mysql username> \
-#                               <mysql password> \
-#                               <database name>
-import sys
-import MySQLdb
-
+"""states models"""
 if __name__ == "__main__":
+    import MySQLdb
+    import sys
+
     db_host = "localhost"
     db_user = sys.argv[1]
     db_password = sys.argv[2]
@@ -15,13 +13,14 @@ if __name__ == "__main__":
     db = MySQLdb.connect(
         host=db_host, user=db_user, passwd=db_password, db=db_name, port=port
     )
-    c = db.cursor()
-    c.execute("SELECT `c`.`id`, `c`.`name`, `s`.`name` \
+    cursor = db.cursor()
+
+    cursor.execute("SELECT `c`.`id`, `c`.`name`, `s`.`name` \
                  FROM `cities` as `c` \
                 INNER JOIN `states` as `s` \
                    ON `c`.`state_id` = `s`.`id` \
                 ORDER BY `c`.`id`")
-    [print(city) for city in c.fetchall()]
+    [print(city) for city in cursor.fetchall()]
 
-    c.close()
+    cursor.close()
     db.close()
