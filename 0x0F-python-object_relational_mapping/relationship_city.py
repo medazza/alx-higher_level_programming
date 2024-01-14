@@ -2,11 +2,11 @@
 """model state"""
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
+
 from relationship_state import Base
 
-
 class City(Base):
-    """ the class class """
+    """ the class City """
     __tablename__ = 'cities'
 
     id = Column(Integer, primary_key=True, nullable=False)

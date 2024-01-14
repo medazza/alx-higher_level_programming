@@ -10,17 +10,17 @@ if __name__ == "__main__":
     db_name = sys.argv[3]
     port = 3306
 
-    db = MySQLdb.connect(
-        host=db_host, user=db_user, passwd=db_password, db=db_name, port=port
+    conn = MySQLdb.connect(
+        host=db_host, user=db_user, passwd=db_password,
+        db=db_name, port=port, charset="utf8"
     )
-    cursor = db.cursor()
+    cur = conn.cursor()
 
-    cursor.execute("SELECT `c`.`id`, `c`.`name`, `s`.`name` \
+    cur.execute("SELECT `c`.`id`, `c`.`name`, `s`.`name` \
                  FROM `cities` as `c` \
                 INNER JOIN `states` as `s` \
                    ON `c`.`state_id` = `s`.`id` \
                 ORDER BY `c`.`id`")
-    [print(city) for city in cursor.fetchall()]
-
-    cursor.close()
-    db.close()
+    [print(city) for city in cur.fetchall()]
+    cur.close()
+    conn.close()

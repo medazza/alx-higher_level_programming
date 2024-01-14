@@ -10,12 +10,13 @@ if __name__ == "__main__":
     db_password = sys.argv[2]  # "your_password"
     db_name = sys.argv[3]  # "your_database_name"
     port = 3306
-    state_name = sys.argv[4]  # "your_database_name"
-    query = "SELECT * FROM states WHERE name LIKE BINARY %s ORDER BY id ASC"
-    params = (state_name,)
-    db = MySQLdb.connect(
-        host=db_host, user=db_user, passwd=db_password, db=db_name, port=port
+    state_name = sys.argv[4]  # "state name searched"
+    # query = "SELECT * FROM states WHERE name LIKE BINARY %s ORDER BY id ASC"
+    # params = (state_name,)
+    conn = MySQLdb.connect(
+        host=db_host, user=db_user, passwd=db_password,
+        db=db_name, port=port, charset="utf8"
     )
-    c = db.cursor()
-    c.execute("SELECT *from `states`")
-    [print(state) for state in c.fetchall() if state[1] == sys.argv[4]]
+    cur = conn.cursor()
+    cur.execute("SELECT * from `states`")
+    [print(state) for state in cur.fetchall() if state[1] == sys.argv[4]]

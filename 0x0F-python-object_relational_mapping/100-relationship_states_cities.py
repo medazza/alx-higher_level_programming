@@ -9,7 +9,7 @@ import sys
 
 if __name__ == "__main__":
     engine = create_engine(
-        "mysql+mysqldb://{}:{}@localhost/{}".format(
+        "mysql+mysqldb://{}:{}@localhost:3306/{}".format(
             sys.argv[1], sys.argv[2], sys.argv[3]
         ),
         pool_pre_ping=True,
@@ -20,6 +20,6 @@ if __name__ == "__main__":
     newState = State(name='California')
     newCity = City(name='San Francisco', state=newState)
     ## newState.cities.append(newCity)
-    session.add_all([newState, newCity])
+    session.add([newState, newCity])
     session.commit()
     session.close()

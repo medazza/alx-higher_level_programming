@@ -13,11 +13,12 @@ if __name__ == "__main__":
     db_name = sys.argv[3]  # "your_database_name"
     port = 3306
 
-    db = MySQLdb.connect(
-        host=db_host, user=db_user, passwd=db_password, db=db_name, port=port
+    conn = MySQLdb.connect(
+        host=db_host, user=db_user, passwd=db_password,
+        db=db_name, port=port, charset="utf8"
     )
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM `states` ORDER BY `id`")
-    [print(state) for state in cursor.fetchall() if state[1][0] == "N"]
-    cursor.close()
-    db.close()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM `states` ORDER BY `id`")
+    [print(state) for state in cur.fetchall() if state[1][0] == "N"]
+    cur.close()
+    conn.close()

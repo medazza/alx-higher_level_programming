@@ -10,20 +10,20 @@ if __name__ == "__main__":
     db_password = sys.argv[2]  # "your_password"
     db_name = sys.argv[3]  # "your_database_name"
     port = 3306
-    state_name = sys.argv[4]  # "your_database_name"
-    query = "SELECT name FROM cities WHERE state_id = \
-    (SELECT id FROM states WHERE name LIKE BINARY %s) ORDER BY cities.id ASC"
-    params = (state_name,)
-    db = MySQLdb.connect(
-        host=db_host, user=db_user, passwd=db_password, db=db_name, port=port
+    state_name = sys.argv[4]  # "state name serached"
+    # query = "SELECT name FROM cities WHERE state_id = \
+    # (SELECT id FROM states WHERE name LIKE BINARY %s) ORDER BY cities.id ASC"
+    # params = (state_name,)
+    conn = MySQLdb.connect(
+        host=db_host, user=db_user, passwd=db_password,
+        db=db_name, port=port, charset="utf8"
     )
-    c = db.cursor()
-
-    c.execute("SELECT * FROM `cities` as `c` \
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM `cities` as `c` \
                 INNER JOIN `states` as `s` \
                    ON `c`.`state_id` = `s`.`id` \
                 ORDER BY `c`.`id`")
-    print(", ".join([ct[2] for ct in c.fetchall() if ct[4] == sys.argv[4]]))
+    print(", ".join([ct[2] for ct in cur.fetchall() if ct[4] == sys.argv[4]]))
 
-    c.close()
-    db.close()
+    cur.close()
+    conn.close()

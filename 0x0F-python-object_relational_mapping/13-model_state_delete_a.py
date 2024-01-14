@@ -20,5 +20,4 @@ if __name__ == "__main__":
         for state in deleteStates:
             session.delete(state)
         session.commit()
-
     session.close()

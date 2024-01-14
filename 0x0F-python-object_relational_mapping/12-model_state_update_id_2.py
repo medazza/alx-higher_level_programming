@@ -13,7 +13,6 @@ if __name__ == "__main__":
         ),
         pool_pre_ping=True,
     )
-
     Session = sessionmaker(bind=engine)
     session = Session()
     updateState = session.query(State).filter_by(id=2).first()

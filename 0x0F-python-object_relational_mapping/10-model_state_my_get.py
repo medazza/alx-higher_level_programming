@@ -3,7 +3,7 @@
 """
 import sys
 from model_state import Base, State
-from sqlalchemy import create_engine, select, text, bindparam
+from sqlalchemy import create_engine, select
 
 if __name__ == "__main__":
     engine = create_engine(
