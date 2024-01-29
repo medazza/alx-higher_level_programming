@@ -4,7 +4,6 @@ Displays the X-Request-Id header request to url.
 usage:
     ./1-hbtn_header.py url
 """
-
 import urllib.request
 import sys
 
