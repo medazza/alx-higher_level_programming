@@ -49,7 +49,6 @@ childObject.greet(); // Outputs: Hello!
 ```
 
 These are fundamental concepts in JavaScript that form the building blocks for creating robust and maintainable code.
-```
 
 ---
 ## Author
